@@ -1,0 +1,30 @@
+here we use free gemini open source model
+
+#from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
+import streamlit as st
+
+
+load_dotenv()
+
+
+st.header('Research Tool')
+
+user_input = st.text_input("Enter your Prompt")
+
+#button
+if st.button("Generate")://this is button name
+    if user_input.strip():
+        model = ChatGoogleGenerativeAI(
+            model="gemini-3.8-flash"
+        )
+
+        result = model.invoke(user_input)
+        st.write(result.text)
+    else:
+        st.warning("Please enter a prompt.") 
+
+
+this is code        python -m streamlit run prompt_ui.py run asie kro
+or y sTatic prompt hai
