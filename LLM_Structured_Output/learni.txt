@@ -1,0 +1,94 @@
+#simple typedDict
+#here we create reviews of phones and extract structured op from dict
+
+from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+from typing import TypedDict
+
+load_dotenv()
+
+model = ChatOpenAI()
+
+#flow
+
+#her we schema create krenge
+
+class Review(TypedDict):
+
+    summary: str
+    sentiment: str
+
+
+structured_model = model.with_structured_output(Review)
+
+
+
+
+
+
+
+#here reqivew k bhj detae hai
+result = structured_model.invoke(""" The hardware is great, but the software feels bloated. 
+            there are too many pre-install app that I can't remove.
+            Also the ui look outdated compared to other brand Hoping for
+            a software update to fix this.""")
+
+#response in dict type
+#summry generte karke dega
+#syyetempormpt generate krkedeta hai
+#{'summary':"Hard...","seneitment":'negative'}
+print(result)
+print(result['summary'])
+print(result['sentiment'])
+print(type(result))
+
+
+#Now we use Annoted typedDict create kr skte hho
+reason : kabhi kabhi summyr aache se genrtae nhi kr pata toh
+hum log asie me annotedt typedict use krte hai
+
+from typing import TypedDict, Annotated
+summary: Annotated[str, "A brief summary of the review"] 
+asie use kr stej ahia
+
+class Review(TypedDict):
+
+    summary: Annotated[str, "A brief summary of the review"]
+     sentiment: Annotated[str, "Return sentiment of the review either negativen, psitive , or neutral"]
+
+
+structured_model = model.with_structured_output(Review)
+
+
+#here we create reviews of phones and extract structured op from dict
+
+from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+from typing import TypedDict, Annotated, Optional, Literal
+
+#literal me pos ,neg aie kar kte hai 
+load_dotenv()
+
+model = ChatOpenAI()
+
+#flow
+
+#her we schema create krenge
+
+class Review(TypedDict):
+
+     #llist of theme ke jasie
+    key_theme = Annotated[list[str], "Write down all the kye themes discused in the review in a  list"] 
+    summary: Annotated[str, "A brief summary of the review"]
+    sentiment: Annotated[Literal["pos", "neg"], "Return sentiment of the review either negativen, psitive , or neutral"]
+    #pros ho bhi yanhi bhi toh optional kr skte hai iske liye we have Optional function
+    pros: Annotated[Optional[list[str]], "Write down all the pros inside a list"]
+    cons : Annotated[Optional[list[str]],"Write down all the cons inside a list"]
+
+
+structured_model = model.with_structured_output(Review)
+
+from typing import TypedDict, Annotated, Optional, Literal
+annoted me hum define kar skte hai text aoru achese 
+Optional me koi pros hai ya nhi cons  ye btane ke liye we use Optional
+Literal --> me pos, neg btane ke liye we use
