@@ -1,0 +1,53 @@
+make file chatmodel_openai.py
+from langchain_openai import ChatOpenAI baseChat mother 
+se insherit krta hai
+
+this is an chatmodel
+
+isme jo result dega
+reslt me bahut kuch dikhayi dega content bol ke anddditiona keywords dega metwords tokens wgar ing
+forsmation dega diffently run by open anddditiona
+
+answer lene ke liye
+print(result.content) to see the ansewers
+
+#we also pass the temperature as 
+parameters ,the temperature give its act as creative responses
+lower value= 0.0-0.3
+higher value = 0.7-1.5
+
+#one more parameter 
+iss se btate toh ki op me kitne token chahte ho
+its helpful bc in paid model per pasie  token dene padte hai 
+or  words limit generate kra skte hai h ia 10 owrds or 50 words
+Restrrict krna 
+max_completions_token=10 == are words
+ex- we sds ss , sd sdf, sd sdss ,
+
+
+#now we goto next model anthropic 
+so use api antrhotpic go to console anthoropic
+
+#So this is the power of langchain ki kisi bhi model se
+baat kr skte ho kam code change kiye bina
+
+has minimal diffenrece
+alaag alag api se baat kr skte hai
+
+
+#NowWE USE OPEN OSRUCE FMODEL
+file name = chatmodel_hf
+HUGGINGFACAE API key
+#REPO KA NAAM PASS MODEL WE USE,
+#  TASK KY KRANA CHAHTE HAI
+## Hugging Face hosted model configure karo
+
+llm = HuggingFaceEndpoint(
+    repo_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    task="text-generation",
+     max_new_tokens=100,
+    provider="auto"
+)
+
+
+
