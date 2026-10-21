@@ -1,0 +1,9 @@
+Humanmssg(content='I want to req a refund fro my order #58442)
+AImssg(content='your resfund req for order #
+524 has been intiated. it wiil eb processed in 3--5 bussiness days)
+isko ye mssg utha k txt file me save kra 
+
+
+ab 2 din baad fir user aa gya ki wher is my refund 
+question smjhne ke liye we use msg placholders
+ab prev mssg ka store dekne ke liye we use MSSSGPLACEHOLDER 

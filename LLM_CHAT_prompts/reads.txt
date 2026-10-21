@@ -1,0 +1,109 @@
+# from langchain_openai import ChatOpenAI
+import os
+from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+print("API key loaded:", bool(os.getenv("GOOGLE_API_KEY")))
+model = ChatGoogleGenerativeAI(model="gemini-3.8-flash")
+# model = ChatOpenAI()
+
+#this is infinite loop jb tk 
+# user exit nhi kre
+while True:
+    user_input = input("You : ")
+    if user_input == 'exit':
+        break
+    #agr exit nhi hai toh
+    result = model.invoke(user_input)
+    print("AI response : ",result.content)
+
+ 
+
+ abbhi iss chatbot me hum prev mssg store nhi kr 
+ paa rhae hai history nhi hai save 
+ toh ab shum ek prev mssg hsitory store krnege mssg ki
+
+
+print("API key loaded:", bool(os.getenv("GOOGLE_API_KEY")))
+model = ChatGoogleGenerativeAI(model="gemini-3.8-flash")
+# model = ChatOpenAI()
+
+#for storing prev mssg history
+chat_history = []
+
+
+
+#this is infinite loop jb tk 
+# user exit nhi kre
+while True:
+    user_input = input("You : ")
+    #apn ka msg chat history me append krnege
+    chat_history.append(user_input)
+    if user_input == 'exit':
+        break
+    #agr exit nhi hai toh
+
+    #llm ke pass chat history hoga jyga, 
+    # sent chat history, invoke means single msg
+    result = model.invoke(chat_history)
+
+     #jo ai se aaya usko bhi sotre kro ,
+     # list mssg hoga ,,, jo llm se new mmsg 
+     # usko bi caht history me appen kdendg
+
+    chat_history.append(result.content)
+
+    print("AI response : ",result.content)
+
+
+#lop se bhr aagynge toh entire chat history
+print(chat_history)
+
+#result.text ye gemini me use krte hai
+
+
+step8 chat_history pichala prev mssg store krta hai 
+['hi', 'Hello! How can I help you today?', 'which is greater 2 or 0 ?',
+ '**2** is greater than 0.', 'now multiply the bigger number with 10', 
+ '2 multiplied by 10 is **20**.', 'exit']
+
+pr abhi jo chat_history me msshg hai wo bahut mssy haipta
+nhi chal rha hai kaun ky mssg kiya hai or jb bahut bade level me hote hai chat chat_history
+toh isse store krne ke liye dusra chahiye
+
+list ke chat ek ki ye user ki hai ya ai ka hai
+so llm solve this has three  mssg
+system msg, human msg, ai msg
+
+create file mssgs.py
+from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
+from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+model = ChatOpenAI()
+
+
+#list as chathistory
+#create systemmssg
+messages = [
+   SystemMessage(content='You are helpful assistant'),
+   HumanMessage(content='Tell me about Langchain')
+
+]
+
+#result dega ai# model ko bhja ,ans diya 
+result = model.invoke(messages)
+
+#plt ke ai ans dega or usee append kr denge
+#fir use plt kr ai msg me convert kiya 
+messages.append(AIMessage(content=result.content))
+
+
+#fir caht history me convent kre 
+print(messages)
+
