@@ -1,0 +1,20 @@
+# Virtual environments
+venv/
+venv*/
+**/venv/
+**/venv*/
+
+# Secrets
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Large model files
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.dll
