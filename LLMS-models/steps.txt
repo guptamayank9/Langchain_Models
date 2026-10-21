@@ -1,0 +1,31 @@
+install venv
+python -m venv venv
+venv\Scripts\Activate
+then run pip install -r requirements.txt
+
+create test.py
+run by : python test.py
+
+openai api key make 
+and paste in env
+
+make file llm_demo.py
+from langchain_openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+#make obj of llm
+
+llm = OpenAI(model='gpt-3.5-turbo-instruct')
+
+#importn funct call invoke
+result = llm.invoke("What is the capital of India")
+
+print(result)
+
+string take and string give
+
+this are old
+ use new one
+run python llm_demo.py
