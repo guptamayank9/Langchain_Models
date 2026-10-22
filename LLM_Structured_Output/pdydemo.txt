@@ -1,0 +1,133 @@
+install pydantic
+pip install pydantic
+from pydantic import BaseModel
+
+#inherit baseclass model
+class Student(BaseModel):
+    #has only one attribute
+
+    name:str
+
+#dict create
+new_student  = {'name':'nitish'}
+
+student = Student(**new_student)
+
+print(student)
+
+
+
+#default value-->when jb aapke pass value na ho
+#default value asie rkhte hai
+   ///// name: str = 'nitsihs'
+#dict create
+new_student  = {}
+
+
+#Optional field==> asie cheez jo ya ho ya naho 
+toh usse mil jsaie ki optional me ex kis post hai ya nhi haiasie
+ase krna smjha 
+
+class Student(BaseModel):
+    #has only one attribute
+#   #simple ex
+#     name:str
+
+   #default value asie rkhte hai
+    name: str = 'nitsihs'
+    #optional
+    age: Optional[int] = None
+
+
+#type
+coerincing => kr detai hai pydantic means dat coneversion
+jasie maine number ko string format me bhj diya toh pydantic usko ceoneeert kr dega 
+numbre form me apne aap 
+
+new_student  = {'age':'23'}
+here 23 is in strin format smjha
+
+#other s features
+python -m pip install "pydantic[email]"
+ye install kr lena 
+ye Email ko valid bta deta hai
+EmailStr ses
+
+ email:EmailStr
+
+ asie karke do class lko
+
+
+
+#FIELD FUNCTIONs-->default value, constraints , description ,regex exprss
+kr likh skte ho
+import Field funcitons
+
+from pydantic import BaseModel, EmailStr, Field
+from typing import Optional
+
+
+#inherit baseclass model
+class Student(BaseModel):
+    #has only one attribute
+#   #simple ex
+#     name:str
+
+   #default value asie rkhte hai
+    name: str = 'nitsihs'
+    #optional
+    age: Optional[int] = None
+
+    email:EmailStr
+
+ #gt means-- greaterthan equal
+    #lt means == > less than equal
+    cgpa: float = Field(gt=0, lt=10)
+
+#dict create
+new_student  = {'age':23,'email':'abc@gmail.com', 'cgpa':9}
+
+AISE BHI KARKE BHJ SKTE HAI VALUE
+
+cgpa: float = Field(gt=0, lt=10, default=5, description=('A decimal vallue represneting the cgpa of the student'))
+
+
+#return pydantic ceovnert in json or dict format
+
+#dict create
+new_student  = {'age':23,'email':'abc@gmail.com', 'cgpa':9}
+
+student = Student(**new_student)
+#dict converion
+
+student_dict = dict(student)
+print(student_dict['age'])
+
+#json me lana answer
+student_json = student.model_dump_json()
+print(student_json)
+
+
+
+// #pura project ek lang me na bjaya jo ho
+// #multiple lang use krte hai 
+
+// #so here we dont use pydantic
+// we use json formt
+use json format file 
+json_schema.json
+
+{
+    "title":"student",
+    "description":"Schema about student",
+    "type":"object",
+    "properties":{
+        "name":"string",
+        "age":"integer"
+    },
+    "required":["name"]
+}
+
+dekhne ke liye we demo create
+structrured _outpu_json.pydantic
+ab json se bnayenge

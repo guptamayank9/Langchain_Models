@@ -1,6 +1,6 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 
-embedding = HuggingFaceEmbeddings(model_name = 'sentence-transformers/all-MiniLM-L12-v2')
+embedding =HuggingFaceEmbeddings(model_name = 'sentence-transformers/all-MiniLM-L12-v2') 
 
 # text = "Delhi is the capital of India"
 documents=[
