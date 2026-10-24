@@ -1,0 +1,2 @@
+python -m pip install -U langchain-classic  $$ this is fro StructuredOutputParsers
+python -c "from langchain_classic.output_parsers import StructuredOutputParser, ResponseSchema; print('Import successful')"
