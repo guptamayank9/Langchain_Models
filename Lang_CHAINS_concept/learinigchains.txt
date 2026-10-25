@@ -1,0 +1,29 @@
+use groq api key
+python -m pip install -U langchain-groq
+model="llama-3.1-8b-instant", model used
+
+run -- > python simple_chains.py
+
+chain = prompt | model | parser
+
+- prompt — topic ke according prompt banata hai.
+- model — Groq API ke through LLM se response leta hai.
+- parser — model ke response ko simple string mein convert karta hai.
+- chain.invoke() — poori chain execute karta hai.
+- chain.get_graph().print_ascii() — chain ka flow terminal mein dikhata hai.
+
+
+#now come to sequential_chains
+python sequential_chains.py
+here 2 baar llms call hongi aur
+ek 2 prompt bna ke e ksummarize krenge topic ko
+
+chains = prompt1 | model | parser | prompt2 | model | parser
+
+Isko Sequential LCEL Chain keh sakte hain.
+- prompt1 topic ko detailed report wale prompt mein convert karta hai.
+- Pehla model report generate karta hai.
+- Pehla parser output ko string banata hai.
+- prompt2 us string ko {text} variable mein daalta hai.
+- Doosra model summary generate karta hai.
+- Aakhri parser final output ko string banata hai.
