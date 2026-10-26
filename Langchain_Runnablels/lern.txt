@@ -1,0 +1,11 @@
+simple_llm.py
+ use model not chatnmodel
+
+pdf reader
+
+llm chain jisme prompt nd llm ni dena padta hai direct pas krke
+call kr skte haiS
+
+
+Package installer
+python -m pip install -U langchain-community langchain-openai langchain-text-splitters faiss-cpu
